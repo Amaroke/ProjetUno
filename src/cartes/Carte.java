@@ -2,37 +2,65 @@ package cartes;
 
 public class Carte {
 
-    private int valeur;
+    Carte(Uno uno) {
 
-    private Couleur couleur;
-
-    public Carte(int valeur, Couleur couleur) {
-        assert (valeur >= 1 && valeur <= 8) : "Valeur interdite pour une carte";
-        this.valeur = valeur;
-        assert (couleur == Couleur.VERT || couleur == Couleur.JAUNE || couleur == Couleur.BLEU
-                || couleur == Couleur.ROUGE) : "Couleur non autorisée pour une carte";
-        this.couleur = couleur;
     }
 
-    public int getValeur() {
-        return valeur;
+    Carte(Uno uno, Couleur couleur) {
+
     }
 
-    public Couleur getCouleur() {
-        return couleur;
+    abstract boolean peutEtreRecouverte(Carte c) {
+
     }
 
-    public String toString() {
-        return "Carte{" + "valeur=" + valeur + ", couleur=" + couleur + '}';
+    abstract int getValeur() {
+
     }
 
-    public void setValeur(int valeur) {
-        assert (valeur >= 1 && valeur <= 8) : "Valeur interdite pour une carte";
-        this.valeur = valeur;
+    abstract int effet() {
+
     }
 
-    public void setCouleur(Couleur couleur) {
-        this.couleur = couleur;
+    Couleur getCouleur() {
+
     }
+
+    boolean estSansCouleur() {
+
+    }
+
+    void appliquerEffet() {
+
+    }
+
+    boolean estDeCouleurCompatible(Couleur c) {
+
+    }
+
+    boolean peutEtrePoseeSur(CarteChiffre c) {
+
+    }
+
+    boolean peutEtrePoseeSur(CarteChangementDeSens c) {
+
+    }
+
+    boolean peutEtrePoseeSur(CarteJoker c) {
+
+    }
+
+    boolean peutEtrePoseeSur(CartePasseTonTour c) {
+
+    }
+
+    boolean peutEtrePoseeSur(CartePlus2 c) {
+
+    }
+
+    boolean peutEtrePoseeSur(CartePlus4 c) {
+
+    }
+
 
 }
