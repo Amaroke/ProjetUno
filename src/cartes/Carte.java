@@ -1,6 +1,6 @@
 package cartes;
 
-public class Carte {
+public abstract class Carte {
 
     protected Uno uno;
     protected Couleur couleur;
@@ -14,24 +14,18 @@ public class Carte {
         this.couleur = couleur;
     }
 
-    abstract boolean peutEtreRecouverte(Carte c) {
-        return c.peutEtrePoseeSur(this);
-    }
+    abstract boolean peutEtreRecouverte(Carte c);
 
-    abstract int getValeur() {
+    abstract int getValeur();
 
-    }
-
-    abstract int effet() {
-
-    }
+    abstract int effet();
 
     Couleur getCouleur() {
         return couleur;
     }
 
     boolean estSansCouleur() {
-
+        return this.getCouleur().equals(null);
     }
 
     void appliquerEffet() {
@@ -39,11 +33,10 @@ public class Carte {
     }
 
     boolean estDeCouleurCompatible(Couleur c) {
-
+        return this.getCouleur().equals(c);
     }
 
     boolean peutEtrePoseeSur(CarteChiffre c) {
-
     }
 
     boolean peutEtrePoseeSur(CarteChangementDeSens c) {
