@@ -1,5 +1,5 @@
 package cartes;
 
-public class Chiffre {
+public class CarteChiffre {
     int valeur;
 }
