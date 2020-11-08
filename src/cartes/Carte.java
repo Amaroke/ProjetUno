@@ -2,16 +2,20 @@ package cartes;
 
 public class Carte {
 
-    Carte(Uno uno) {
+    protected Uno uno;
+    protected Couleur couleur;
 
+    Carte(Uno uno) {
+        this.uno = uno;
     }
 
     Carte(Uno uno, Couleur couleur) {
-
+        this.uno = uno;
+        this.couleur = couleur;
     }
 
     abstract boolean peutEtreRecouverte(Carte c) {
-
+        return c.peutEtrePoseeSur(this);
     }
 
     abstract int getValeur() {
@@ -23,7 +27,7 @@ public class Carte {
     }
 
     Couleur getCouleur() {
-
+        return couleur;
     }
 
     boolean estSansCouleur() {
