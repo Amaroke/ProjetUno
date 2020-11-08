@@ -5,57 +5,57 @@ public abstract class Carte {
     protected Uno uno;
     protected Couleur couleur;
 
-    Carte(Uno uno) {
+    public Carte(Uno uno) {
         this.uno = uno;
     }
 
-    Carte(Uno uno, Couleur couleur) {
+    public Carte(Uno uno, Couleur couleur) {
         this.uno = uno;
         this.couleur = couleur;
     }
 
-    abstract boolean peutEtreRecouverte(Carte c);
+    public abstract boolean peutEtreRecouverte(Carte c);
 
-    abstract int getValeur();
+    public abstract int getValeur();
 
-    abstract int effet();
+    public abstract int effet();
 
-    Couleur getCouleur() {
+    public Couleur getCouleur() {
         return couleur;
     }
 
-    boolean estSansCouleur() {
+    public boolean estSansCouleur() {
         return this.getCouleur().equals(null);
     }
 
-    void appliquerEffet() {
+    public void appliquerEffet() {
 
     }
 
-    boolean estDeCouleurCompatible(Couleur c) {
+    public boolean estDeCouleurCompatible(Couleur c) {
         return this.getCouleur().equals(c);
     }
 
-    boolean peutEtrePoseeSur(CarteChiffre c) {
+    public boolean peutEtrePoseeSur(CarteChiffre c) {
     }
 
-    boolean peutEtrePoseeSur(CarteChangementDeSens c) {
-
-    }
-
-    boolean peutEtrePoseeSur(CarteJoker c) {
+    public boolean peutEtrePoseeSur(CarteChangementDeSens c) {
 
     }
 
-    boolean peutEtrePoseeSur(CartePasseTonTour c) {
+    public boolean peutEtrePoseeSur(CarteJoker c) {
 
     }
 
-    boolean peutEtrePoseeSur(CartePlus2 c) {
+    public boolean peutEtrePoseeSur(CartePasseTonTour c) {
 
     }
 
-    boolean peutEtrePoseeSur(CartePlus4 c) {
+    public boolean peutEtrePoseeSur(CartePlus2 c) {
+
+    }
+
+    public boolean peutEtrePoseeSur(CartePlus4 c) {
 
     }
 
