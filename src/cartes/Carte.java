@@ -33,11 +33,11 @@ public abstract class Carte {
     }
 
     public boolean estDeCouleurCompatible(Couleur c) {
-        return this.getCouleur().equals(c) || this.estSansCouleur();
+        return this.getCouleur().equals(c);
     }
 
     public boolean peutEtrePoseeSur(CarteChiffre c) {
-        return this.estDeCouleurCompatible(c.getCouleur());
+        return this.estSansCouleur()  || this.estDeCouleurCompatible(c.getCouleur());
     }
 
     public boolean peutEtrePoseeSur(CarteChangementDeSens c) {
@@ -62,10 +62,9 @@ public abstract class Carte {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Carte{");
-        sb.append("uno=").append(uno);
-        sb.append(", couleur=").append(couleur);
-        sb.append('}');
-        return sb.toString();
+        return "Carte{" +
+                "uno=" + uno +
+                ", couleur=" + couleur +
+                '}';
     }
 }

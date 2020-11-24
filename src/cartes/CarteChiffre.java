@@ -24,14 +24,12 @@ public class CarteChiffre extends Carte{
 
     @Override
     public boolean peutEtrePoseeSur(CarteChiffre c) {
-        return this.getValeur() == c.getValeur();
+        return this.estDeCouleurCompatible(c.getCouleur()) || this.getValeur() == c.getValeur();
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("CarteChiffre{");
-        sb.append("chiffre=").append(chiffre);
-        sb.append('}');
-        return sb.toString();
+        return "CarteChiffre{" + "chiffre=" + chiffre +
+                '}';
     }
 }
