@@ -12,39 +12,50 @@ public class FabriqueCartes {
         return new PaquetDeCartes();
     }
 
-    public PaquetDeCartes getPaquet1Vert() {
-        PaquetDeCartes paquet = new PaquetDeCartes();
-        paquet.ajouter(new Carte(1, Couleur.VERT));
-        return paquet;
-    }
-
-    public PaquetDeCartes getPaquet5Vert() {
-        Carte[] cartes = new Carte[5];
-        PaquetDeCartes paquet = new PaquetDeCartes();
-        for (int i = 0; i < 5; ++i) {
-            cartes[i] = new Carte(i + 1, Couleur.VERT);
+    public PaquetDeCartes getPaquetDeUno() {
+        Uno uno = new Uno();
+        PaquetDeCartes pdc = new PaquetDeCartes();
+        Carte[] cartesBleues = new Carte[25];
+        Carte[] cartesRouges = new Carte[25];
+        Carte[] cartesJaunes = new Carte[25];
+        Carte[] cartesVertes = new Carte[25];
+        CarteJoker[] cartesJokers = new CarteJoker[4];
+        CartePlus4[] cartesPlus4 = new CartePlus4[4];
+        for (int i = 0; i < 19; ++i) {
+            cartesBleues[i] = new CarteChiffre(uno, Couleur.BLEU, (i / 2) + 1);
+            cartesRouges[i] = new CarteChiffre(uno, Couleur.ROUGE, (i / 2) + 1);
+            cartesJaunes[i] = new CarteChiffre(uno, Couleur.JAUNE, (i / 2) + 1);
+            cartesVertes[i] = new CarteChiffre(uno, Couleur.VERT, (i / 2) + 1);
         }
-        paquet.ajouter(cartes);
-        return paquet;
-    }
-
-    public PaquetDeCartes getPaquet32() {
-        Carte[] cartes = new Carte[32];
-        PaquetDeCartes paquet = new PaquetDeCartes();
-        for (int i = 0; i < 8; ++i) {
-            cartes[i] = new Carte(i + 1, Couleur.BLEU);
+        for (int i = 19; i < 21; ++i) {
+            cartesBleues[i] = new CartePlus2(uno, Couleur.BLEU);
+            cartesRouges[i] = new CartePlus2(uno, Couleur.ROUGE);
+            cartesJaunes[i] = new CartePlus2(uno, Couleur.JAUNE);
+            cartesVertes[i] = new CartePlus2(uno, Couleur.VERT);
         }
-        for (int i = 8; i < 16; ++i) {
-            cartes[i] = new Carte(i - 7, Couleur.ROUGE);
+        for (int i = 21; i < 23; ++i) {
+            cartesBleues[i] = new CarteChangementDeSens(uno, Couleur.BLEU);
+            cartesRouges[i] = new CarteChangementDeSens(uno, Couleur.ROUGE);
+            cartesJaunes[i] = new CarteChangementDeSens(uno, Couleur.JAUNE);
+            cartesVertes[i] = new CarteChangementDeSens(uno, Couleur.VERT);
         }
-        for (int i = 16; i < 24; ++i) {
-            cartes[i] = new Carte(i - 15, Couleur.VERT);
+        for (int i = 23; i < 25; ++i) {
+            cartesBleues[i] = new CartePasseTonTour(uno, Couleur.BLEU);
+            cartesRouges[i] = new CartePasseTonTour(uno, Couleur.ROUGE);
+            cartesJaunes[i] = new CartePasseTonTour(uno, Couleur.JAUNE);
+            cartesVertes[i] = new CartePasseTonTour(uno, Couleur.VERT);
         }
-        for (int i = 24; i < 32; ++i) {
-            cartes[i] = new Carte(i - 23, Couleur.JAUNE);
+        for (int i = 0; i < 4; ++i) {
+            cartesJokers[i] = new CarteJoker(uno, null);
+            cartesPlus4[i] = new CartePlus4(uno, null);
         }
-        paquet.ajouter(cartes);
-        return paquet;
+        pdc.ajouter(cartesBleues);
+        pdc.ajouter(cartesRouges);
+        pdc.ajouter(cartesJaunes);
+        pdc.ajouter(cartesVertes);
+        pdc.ajouter(cartesJokers);
+        pdc.ajouter(cartesPlus4);
+        return pdc;
     }
 
 }

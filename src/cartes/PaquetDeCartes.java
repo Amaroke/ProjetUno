@@ -39,7 +39,7 @@ public class PaquetDeCartes {
     }
 
     public void ajouter(PaquetDeCartes pdc) {
-            this.paquet.addAll(pdc.paquet);
+        this.paquet.addAll(pdc.paquet);
     }
 
     public void melanger() {
