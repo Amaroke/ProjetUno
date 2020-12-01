@@ -33,11 +33,11 @@ public abstract class Carte {
     }
 
     public boolean estDeCouleurCompatible(Couleur c) {
-        return this.getCouleur().equals(c);
+        return this.estSansCouleur()  || c == null || this.getCouleur().equals(c);
     }
 
     public boolean peutEtrePoseeSur(CarteChiffre c) {
-        return this.estSansCouleur()  || this.estDeCouleurCompatible(c.getCouleur());
+        return this.estDeCouleurCompatible(c.getCouleur());
     }
 
     public boolean peutEtrePoseeSur(CarteChangementDeSens c) {
