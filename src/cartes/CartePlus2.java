@@ -24,5 +24,9 @@ public class CartePlus2 extends Carte {
     public boolean peutEtrePoseeSur(CartePlus2 c) {
         return true;
     }
-
+    @Override
+    public String toString() {
+        return "CartePlus2{" + "couleur=" + this.getCouleur() +
+                '}';
+    }
 }

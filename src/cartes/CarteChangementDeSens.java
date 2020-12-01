@@ -25,4 +25,10 @@ public class CarteChangementDeSens extends Carte {
     public boolean peutEtrePoseeSur(CarteChangementDeSens c) {
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "CarteChangementDeSens{" + "couleur=" + this.getCouleur() +
+                '}';
+    }
 }

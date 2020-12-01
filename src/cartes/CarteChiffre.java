@@ -29,7 +29,7 @@ public class CarteChiffre extends Carte{
 
     @Override
     public String toString() {
-        return "CarteChiffre{" + "chiffre=" + chiffre +
+        return "CarteChiffre{" + "couleur=" + this.getCouleur() + "chiffre=" + chiffre +
                 '}';
     }
 }

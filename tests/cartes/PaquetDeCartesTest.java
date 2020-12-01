@@ -2,9 +2,8 @@ package cartes;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class PaquetDeCartesTest {
 
@@ -54,9 +53,10 @@ class PaquetDeCartesTest {
     }
 
     @Test
-    void lire() {
+    void lire() throws FileNotFoundException {
         FabriqueCartes singleton = FabriqueCartes.getInstance();
         PaquetDeCartes pdc = singleton.getPaquetDeUno();
         pdc.lire("lireTest.txt");
+        System.out.println(pdc);
     }
 }

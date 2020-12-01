@@ -24,4 +24,9 @@ public class CarteJoker extends Carte {
     public boolean peutEtrePoseeSur(CarteJoker c) {
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "CarteJoker{}";
+    }
 }

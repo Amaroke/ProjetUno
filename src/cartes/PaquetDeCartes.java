@@ -3,7 +3,6 @@ package cartes;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
 
 public class PaquetDeCartes {
 
@@ -32,7 +31,7 @@ public class PaquetDeCartes {
     public String toString() {
         StringBuilder s = new StringBuilder(this.getNombreDeCartes() * 30);
         for (Carte i : this.paquet) {
-            s.append(i.toString()).append(" ");
+            s.append(i.toString()).append("\n");
         }
         return s.toString();
     }
@@ -110,16 +109,83 @@ public class PaquetDeCartes {
         }
     }
 
-    public void lire(String args) {
-        File fichier;
-        Scanner scan;
-        fichier = new File(args);
+    public void lire(String args) throws FileNotFoundException {
+        FileReader file = new FileReader(args);
+        BufferedReader buffer = new BufferedReader(file);
+        String ligne;
+        Uno uno = new Uno();
         try {
-            scan = new Scanner(fichier);
-            while (scan.hasNextLine()) {
-                scan.nextLine();
+            while ((ligne = buffer.readLine()) != null) {
+                String[] mots = ligne.split(" ");
+                Couleur couleur = null;
+                if (mots[0].equals("CarteChiffre")) {
+                    if (mots[1].equals("Bleu")) {
+                        couleur = Couleur.BLEU;
+                    }
+                    if (mots[1].equals("Rouge")) {
+                        couleur = Couleur.ROUGE;
+                    }
+                    if (mots[1].equals("Jaune")) {
+                        couleur = Couleur.JAUNE;
+                    }
+                    if (mots[1].equals("Vert")) {
+                        couleur = Couleur.VERT;
+                    }
+                    this.ajouter(new CarteChiffre(uno, couleur, Integer.parseInt(mots[2])));
+                }
+                if (mots[0].equals("CarteChangementDeSens")) {
+                    if (mots[1].equals("Bleu")) {
+                        couleur = Couleur.BLEU;
+                    }
+                    if (mots[1].equals("Rouge")) {
+                        couleur = Couleur.ROUGE;
+                    }
+                    if (mots[1].equals("Jaune")) {
+                        couleur = Couleur.JAUNE;
+                    }
+                    if (mots[1].equals("Vert")) {
+                        couleur = Couleur.VERT;
+                    }
+                    this.ajouter(new CarteChangementDeSens(uno, couleur));
+                }
+                if (mots[0].equals("CarteJoker")) {
+                    this.ajouter(new CarteJoker(uno, couleur));
+                }
+                if (mots[0].equals("CartePasseTonTour")) {
+                    if (mots[1].equals("Bleu")) {
+                        couleur = Couleur.BLEU;
+                    }
+                    if (mots[1].equals("Rouge")) {
+                        couleur = Couleur.ROUGE;
+                    }
+                    if (mots[1].equals("Jaune")) {
+                        couleur = Couleur.JAUNE;
+                    }
+                    if (mots[1].equals("Vert")) {
+                        couleur = Couleur.VERT;
+                    }
+                    this.ajouter(new CartePasseTonTour(uno, couleur));
+                }
+                if (mots[0].equals("CartePlus2")) {
+                    if (mots[1].equals("Bleu")) {
+                        couleur = Couleur.BLEU;
+                    }
+                    if (mots[1].equals("Rouge")) {
+                        couleur = Couleur.ROUGE;
+                    }
+                    if (mots[1].equals("Jaune")) {
+                        couleur = Couleur.JAUNE;
+                    }
+                    if (mots[1].equals("Vert")) {
+                        couleur = Couleur.VERT;
+                    }
+                    this.ajouter(new CartePlus2(uno, couleur));
+                }
+                if (mots[0].equals("CartePlus4")) {
+                    this.ajouter(new CartePlus4(uno, couleur));
+                }
             }
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

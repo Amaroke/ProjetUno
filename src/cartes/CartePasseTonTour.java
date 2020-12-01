@@ -24,4 +24,10 @@ public class CartePasseTonTour extends Carte {
     public boolean peutEtrePoseeSur(CartePasseTonTour c) {
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "CartePasseTonTour{" + "couleur=" + this.getCouleur() +
+                '}';
+    }
 }
