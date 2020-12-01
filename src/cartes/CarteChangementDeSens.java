@@ -2,7 +2,7 @@ package cartes;
 
 public class CarteChangementDeSens extends Carte {
 
-    CarteChangementDeSens (Uno uno, Couleur couleur) {
+    CarteChangementDeSens(Uno uno, Couleur couleur) {
         super(uno, couleur);
     }
 
@@ -28,7 +28,6 @@ public class CarteChangementDeSens extends Carte {
 
     @Override
     public String toString() {
-        return "CarteChangementDeSens{" + "couleur=" + this.getCouleur() +
-                '}';
+        return "Carte ChangementDeSens de couleur " + this.getCouleur();
     }
 }

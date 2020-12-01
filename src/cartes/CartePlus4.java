@@ -24,8 +24,9 @@ public class CartePlus4 extends Carte {
     public boolean peutEtrePoseeSur(CartePlus4 c) {
         return true;
     }
+
     @Override
     public String toString() {
-        return "CartePlus4{}";
+        return "Carte Plus4";
     }
 }

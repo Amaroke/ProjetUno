@@ -1,3 +1,4 @@
+CarteChiffre Bleu 0
 CarteChiffre Bleu 1
 CarteChiffre Bleu 1
 CarteChiffre Bleu 2
@@ -16,13 +17,13 @@ CarteChiffre Bleu 8
 CarteChiffre Bleu 8
 CarteChiffre Bleu 9
 CarteChiffre Bleu 9
-CarteChiffre Bleu 10
 CartePlus2 Bleu
 CartePlus2 Bleu
 CarteChangementDeSens Bleu
 CarteChangementDeSens Bleu
 CartePasseTonTour Bleu
 CartePasseTonTour Bleu
+CarteChiffre Rouge 0
 CarteChiffre Rouge 1
 CarteChiffre Rouge 1
 CarteChiffre Rouge 2
@@ -41,13 +42,13 @@ CarteChiffre Rouge 8
 CarteChiffre Rouge 8
 CarteChiffre Rouge 9
 CarteChiffre Rouge 9
-CarteChiffre Rouge 10
 CartePlus2 Rouge
 CartePlus2 Rouge
 CarteChangementDeSens Rouge
 CarteChangementDeSens Rouge
 CartePasseTonTour Rouge
 CartePasseTonTour Rouge
+CarteChiffre Jaune 0
 CarteChiffre Jaune 1
 CarteChiffre Jaune 1
 CarteChiffre Jaune 2
@@ -66,13 +67,13 @@ CarteChiffre Jaune 8
 CarteChiffre Jaune 8
 CarteChiffre Jaune 9
 CarteChiffre Jaune 9
-CarteChiffre Jaune 10
 CartePlus2 Jaune
 CartePlus2 Jaune
 CarteChangementDeSens Jaune
 CarteChangementDeSens Jaune
 CartePasseTonTour Jaune
 CartePasseTonTour Jaune
+CarteChiffre Vert 0
 CarteChiffre Vert 1
 CarteChiffre Vert 1
 CarteChiffre Vert 2
@@ -91,7 +92,6 @@ CarteChiffre Vert 8
 CarteChiffre Vert 8
 CarteChiffre Vert 9
 CarteChiffre Vert 9
-CarteChiffre Vert 10
 CartePlus2 Vert
 CartePlus2 Vert
 CarteChangementDeSens Vert

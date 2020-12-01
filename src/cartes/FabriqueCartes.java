@@ -1,13 +1,8 @@
 package cartes;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-
 public class FabriqueCartes {
 
-    private static FabriqueCartes instance = new FabriqueCartes();
+    private static final FabriqueCartes instance = new FabriqueCartes();
 
     public static FabriqueCartes getInstance() {
         return instance;
@@ -27,10 +22,10 @@ public class FabriqueCartes {
         CarteJoker[] cartesJokers = new CarteJoker[4];
         CartePlus4[] cartesPlus4 = new CartePlus4[4];
         for (int i = 0; i < 19; ++i) {
-            cartesBleues[i] = new CarteChiffre(uno, Couleur.BLEU, (i+1) /2);
-            cartesRouges[i] = new CarteChiffre(uno, Couleur.ROUGE, (i+1)/ 2);
-            cartesJaunes[i] = new CarteChiffre(uno, Couleur.JAUNE, (i+1)/ 2);
-            cartesVertes[i] = new CarteChiffre(uno, Couleur.VERT, (i+1)/ 2);
+            cartesBleues[i] = new CarteChiffre(uno, Couleur.BLEU, (i + 1) / 2);
+            cartesRouges[i] = new CarteChiffre(uno, Couleur.ROUGE, (i + 1) / 2);
+            cartesJaunes[i] = new CarteChiffre(uno, Couleur.JAUNE, (i + 1) / 2);
+            cartesVertes[i] = new CarteChiffre(uno, Couleur.VERT, (i + 1) / 2);
         }
         for (int i = 19; i < 21; ++i) {
             cartesBleues[i] = new CartePlus2(uno, Couleur.BLEU);

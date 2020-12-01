@@ -1,8 +1,9 @@
 package cartes;
 
-public class CarteChiffre extends Carte{
+public class CarteChiffre extends Carte {
     private final int chiffre;
-    CarteChiffre (Uno uno, Couleur couleur, int chiffre) {
+
+    CarteChiffre(Uno uno, Couleur couleur, int chiffre) {
         super(uno, couleur);
         this.chiffre = chiffre;
     }
@@ -29,7 +30,6 @@ public class CarteChiffre extends Carte{
 
     @Override
     public String toString() {
-        return "CarteChiffre{" + "couleur=" + this.getCouleur() + "chiffre=" + chiffre +
-                '}';
+        return "Carte Chiffre de couleur " + this.getCouleur() + " et de valeur " + this.getValeur();
     }
 }

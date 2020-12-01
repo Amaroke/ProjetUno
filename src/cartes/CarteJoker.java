@@ -27,6 +27,6 @@ public class CarteJoker extends Carte {
 
     @Override
     public String toString() {
-        return "CarteJoker{}";
+        return "Carte Joker";
     }
 }

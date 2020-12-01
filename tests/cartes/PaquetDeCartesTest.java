@@ -47,15 +47,15 @@ class PaquetDeCartesTest {
 
     @Test
     void ecrire() throws IOException {
-            FabriqueCartes singleton = FabriqueCartes.getInstance();
-            PaquetDeCartes pdc = singleton.getPaquetDeUno();
-            pdc.ecrire("ecrireTest.txt");
+        FabriqueCartes singleton = FabriqueCartes.getInstance();
+        PaquetDeCartes pdc = singleton.getPaquetDeUno();
+        pdc.ecrire("ecrireTest.txt");
     }
 
     @Test
     void lire() throws FileNotFoundException {
         FabriqueCartes singleton = FabriqueCartes.getInstance();
-        PaquetDeCartes pdc = singleton.getPaquetDeUno();
+        PaquetDeCartes pdc = singleton.getPaquetVide();
         pdc.lire("lireTest.txt");
         System.out.println(pdc);
     }

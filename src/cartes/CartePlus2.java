@@ -1,7 +1,7 @@
 package cartes;
 
 public class CartePlus2 extends Carte {
-    CartePlus2 (Uno uno, Couleur couleur) {
+    CartePlus2(Uno uno, Couleur couleur) {
         super(uno, couleur);
     }
 
@@ -24,9 +24,9 @@ public class CartePlus2 extends Carte {
     public boolean peutEtrePoseeSur(CartePlus2 c) {
         return true;
     }
+
     @Override
     public String toString() {
-        return "CartePlus2{" + "couleur=" + this.getCouleur() +
-                '}';
+        return "Carte Plus2 de couleur " + this.getCouleur();
     }
 }

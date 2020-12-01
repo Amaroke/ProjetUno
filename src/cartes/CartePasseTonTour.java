@@ -27,7 +27,6 @@ public class CartePasseTonTour extends Carte {
 
     @Override
     public String toString() {
-        return "CartePasseTonTour{" + "couleur=" + this.getCouleur() +
-                '}';
+        return "Carte PasseTonTour de couleur " + this.getCouleur();
     }
 }
