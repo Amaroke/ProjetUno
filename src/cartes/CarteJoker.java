@@ -17,7 +17,7 @@ public class CarteJoker extends Carte {
 
     @Override
     public int effet() {
-        return 0;
+        return 3;
     }
 
     @Override

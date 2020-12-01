@@ -18,7 +18,7 @@ public class CarteChangementDeSens extends Carte {
 
     @Override
     public int effet() {
-        return 0;
+        return 2;
     }
 
     @Override

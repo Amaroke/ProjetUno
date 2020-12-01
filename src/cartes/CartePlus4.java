@@ -17,7 +17,7 @@ public class CartePlus4 extends Carte {
 
     @Override
     public int effet() {
-        return 0;
+        return 6;
     }
 
     @Override

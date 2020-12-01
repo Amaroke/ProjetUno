@@ -17,7 +17,7 @@ public class CartePasseTonTour extends Carte {
 
     @Override
     public int effet() {
-        return 0;
+        return 4;
     }
 
     @Override

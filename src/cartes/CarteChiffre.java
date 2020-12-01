@@ -19,7 +19,7 @@ public class CarteChiffre extends Carte{
 
     @Override
     public int effet() {
-        return 0;
+        return 1;
     }
 
     @Override
