@@ -1,5 +1,7 @@
 package cartes;
 
+import uno.Uno;
+
 public class FabriqueCartes {
 
     private static final FabriqueCartes instance = new FabriqueCartes();

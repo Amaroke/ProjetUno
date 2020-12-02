@@ -1,5 +1,7 @@
 package cartes;
 
+import uno.Uno;
+
 public class CarteChangementDeSens extends Carte {
 
     CarteChangementDeSens(Uno uno, Couleur couleur) {

@@ -2,6 +2,7 @@ package cartes;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import uno.Uno;
 
 import static org.junit.jupiter.api.Assertions.*;
 

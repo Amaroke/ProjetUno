@@ -1,5 +1,7 @@
 package cartes;
 
+import uno.Uno;
+
 public abstract class Carte {
 
     protected Uno uno;

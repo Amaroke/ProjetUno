@@ -1,5 +1,7 @@
 package cartes;
 
+import uno.Uno;
+
 public class CartePasseTonTour extends Carte {
     CartePasseTonTour(Uno uno, Couleur couleur) {
         super(uno, couleur);

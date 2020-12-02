@@ -1,5 +1,7 @@
 package cartes;
 
+import uno.Uno;
+
 public class CarteJoker extends Carte {
     CarteJoker(Uno uno, Couleur couleur) {
         super(uno, couleur);

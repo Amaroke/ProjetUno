@@ -1,5 +1,7 @@
 package cartes;
 
+import uno.Uno;
+
 public class CarteChiffre extends Carte {
     private final int chiffre;
 

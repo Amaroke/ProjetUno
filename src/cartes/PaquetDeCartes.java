@@ -1,10 +1,13 @@
 package cartes;
 
+import uno.Uno;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 
-public class PaquetDeCartes {
+public class PaquetDeCartes implements Iterable {
 
     private final ArrayList<Carte> paquet;
 
@@ -188,5 +191,10 @@ public class PaquetDeCartes {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public Iterator iterator() {
+        return paquet.iterator();
     }
 }
