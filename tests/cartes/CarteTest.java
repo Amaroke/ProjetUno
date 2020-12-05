@@ -71,7 +71,22 @@ class CarteTest {
 
     @Test
     void effet() {
-        // Test à écrire.
+        assertEquals(1, carteBleu1.effet());
+        assertEquals(1, carteBleu2.effet());
+        assertEquals(1, carteRouge1.effet());
+        assertEquals(1, carteRouge2.effet());
+        assertEquals(1, carteJaune1.effet());
+        assertEquals(1, carteJaune2.effet());
+        assertEquals(1, carteVert1.effet());
+        assertEquals(1, carteVert2.effet());
+        assertEquals(5, carteBleuPlus2.effet());
+        assertEquals(5, carteRougePlus2.effet());
+        assertEquals(2, carteBleuChangementDeSens.effet());
+        assertEquals(2, carteRougeChangementDeSens.effet());
+        assertEquals(4, carteBleuPasseTonTour.effet());
+        assertEquals(4, carteRougePasseTonTour.effet());
+        assertEquals(3, carteJoker.effet());
+        assertEquals(6, cartePlus4.effet());
     }
 
     @Test
@@ -270,6 +285,4 @@ class CarteTest {
         assertTrue(carteJoker.peutEtrePoseeSur(cartePlus4));
         assertTrue(cartePlus4.peutEtrePoseeSur(cartePlus4));
     }
-
-    // On ne test pas toString, inutile.
 }

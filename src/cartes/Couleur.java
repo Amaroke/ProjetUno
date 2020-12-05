@@ -12,6 +12,6 @@ public enum Couleur {
     }
 
     public String toString() {
-        return this.nom;
+        return nom;
     }
 }

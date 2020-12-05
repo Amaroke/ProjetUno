@@ -17,7 +17,7 @@ public class CarteChiffre extends Carte {
 
     @Override
     public int getValeur() {
-        return this.chiffre;
+        return chiffre;
     }
 
     @Override
@@ -26,12 +26,17 @@ public class CarteChiffre extends Carte {
     }
 
     @Override
+    public void appliquerEffet() {
+        getUno().changerDeJoueur();
+    }
+
+    @Override
     public boolean peutEtrePoseeSur(CarteChiffre c) {
-        return this.estDeCouleurCompatible(c.getCouleur()) || this.getValeur() == c.getValeur();
+        return estDeCouleurCompatible(c.getCouleur()) || getValeur() == c.getValeur();
     }
 
     @Override
     public String toString() {
-        return "Carte Chiffre de couleur " + this.getCouleur() + " et de valeur " + this.getValeur();
+        return "Carte Chiffre de couleur " + getCouleur() + " et de valeur " + getValeur();
     }
 }

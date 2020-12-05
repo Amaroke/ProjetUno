@@ -24,12 +24,18 @@ public class CarteChangementDeSens extends Carte {
     }
 
     @Override
+    public void appliquerEffet() {
+        getUno().changerDeSens();
+        getUno().changerDeJoueur();
+    }
+
+    @Override
     public boolean peutEtrePoseeSur(CarteChangementDeSens c) {
         return true;
     }
 
     @Override
     public String toString() {
-        return "Carte ChangementDeSens de couleur " + this.getCouleur();
+        return "Carte ChangementDeSens de couleur " + getCouleur();
     }
 }

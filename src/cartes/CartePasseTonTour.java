@@ -23,12 +23,17 @@ public class CartePasseTonTour extends Carte {
     }
 
     @Override
+    public void appliquerEffet() {
+        getUno().changerDeJoueur();
+    }
+
+    @Override
     public boolean peutEtrePoseeSur(CartePasseTonTour c) {
         return true;
     }
 
     @Override
     public String toString() {
-        return "Carte PasseTonTour de couleur " + this.getCouleur();
+        return "Carte PasseTonTour de couleur " + getCouleur();
     }
 }

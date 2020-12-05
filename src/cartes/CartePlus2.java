@@ -23,12 +23,18 @@ public class CartePlus2 extends Carte {
     }
 
     @Override
+    public void appliquerEffet() {
+        getUno().distribuerCartesJoueurSuivant(2);
+        getUno().changerDeJoueur();
+    }
+
+    @Override
     public boolean peutEtrePoseeSur(CartePlus2 c) {
         return true;
     }
 
     @Override
     public String toString() {
-        return "Carte Plus2 de couleur " + this.getCouleur();
+        return "Carte Plus2 de couleur " + getCouleur();
     }
 }

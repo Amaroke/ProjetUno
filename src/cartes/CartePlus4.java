@@ -23,6 +23,12 @@ public class CartePlus4 extends Carte {
     }
 
     @Override
+    public void appliquerEffet() {
+        getUno().distribuerCartesJoueurSuivant(4);
+        getUno().changerDeJoueur();
+    }
+
+    @Override
     public boolean peutEtrePoseeSur(CartePlus4 c) {
         return true;
     }

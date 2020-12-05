@@ -23,6 +23,11 @@ public class CarteJoker extends Carte {
     }
 
     @Override
+    public void appliquerEffet() {
+        getUno().changerDeJoueur();
+    }
+
+    @Override
     public boolean peutEtrePoseeSur(CarteJoker c) {
         return true;
     }

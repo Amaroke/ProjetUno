@@ -9,15 +9,22 @@ import java.util.ArrayList;
 public class Uno {
 
     private int nbJoueurs;
+    private ArrayList<Joueur> listeJoueurs;
     private int joueurQuiJoue;
     private int joueurQuiDistribue;
-    private ArrayList<Joueur> listeJoueurs;
     private boolean sensHorraire;
     private PaquetDeCartes pioche;
     private PaquetDeCartes talon;
 
     public Uno() {
+    }
 
+    public int getNbJoueurs() {
+        return nbJoueurs;
+    }
+
+    public boolean getSensHorraire() {
+        return sensHorraire;
     }
 
     public void initialiser(int nbJoueurs) {
@@ -25,8 +32,6 @@ public class Uno {
         talon = singleton.getPaquetVide();
         pioche = singleton.getPaquetDeUno();
         sensHorraire = true;
-        assert (nbJoueurs >= 2) : "Le nombre de joueur n'est pas suffisant (<2).";
-        assert (nbJoueurs <= 10) : "Le nombre de joueur est trop élevé (>10).";
         this.nbJoueurs = nbJoueurs;
         creerLesJoueurs(nbJoueurs);
         distribuerCartes();
@@ -39,33 +44,25 @@ public class Uno {
         assert (nbJoueurs <= 10) : "Le nombre de joueur est trop élevé (>10).";
         listeJoueurs = new ArrayList<>(4);
         for (int i = 0; i < nbJoueurs; ++i) {
-            listeJoueurs.add(new Joueur());
+            listeJoueurs.add(new Joueur(this));
         }
-    }
-
-    public void choisirQuiJoue() {
-        joueurQuiJoue = (int) (1 + (Math.random() * (nbJoueurs() - 1)));
     }
 
     private void choisirQuiDistribue() {
-        if (joueurQuiJoue == nbJoueurs()) {
-            joueurQuiDistribue = 1;
-        } else {
-            joueurQuiDistribue = joueurQuiJoue + 1;
-        }
+        joueurQuiDistribue = (int) (1 + (Math.random() * (getNbJoueurs() - 1)));
+    }
+
+    public void choisirQuiJoue() {
+        joueurQuiJoue = joueurQuiDistribue == getNbJoueurs() ? 1 : joueurQuiDistribue +1;
     }
 
     public void distribuerCartes() {
         for (int i = 0; i < 7; ++i) {
-            for (int j = 0; j < nbJoueurs(); ++i) {
-                listeJoueurs.get(0).getMainDuJoueur().ajouter(talon.piocher());
+            for (int j = 0; j < getNbJoueurs(); ++i) {
+                listeJoueurs.get(j).getMainDuJoueur().ajouter(talon.piocher());
             }
         }
-        pioche.ajouter(talon.piocher());
-    }
-
-    public int nbJoueurs() {
-        return nbJoueurs;
+        this.pioche.ajouter(this.talon.piocher());
     }
 
     public void changerDeSens() {
@@ -73,14 +70,17 @@ public class Uno {
     }
 
     public void changerDeJoueur() {
-        if (joueurQuiJoue == nbJoueurs()) {
-            joueurQuiJoue = 1;
-        } else {
-            joueurQuiJoue = joueurQuiJoue + 1;
+        if (getSensHorraire()) {
+            joueurQuiJoue = (joueurQuiJoue == getNbJoueurs()) ? 1 : joueurQuiJoue + 1;
+        }
+        else {
+            joueurQuiJoue = (joueurQuiJoue == 1) ? getNbJoueurs() : joueurQuiJoue - 1;
         }
     }
 
     public void distribuerCartesJoueurSuivant(int nb) {
-        listeJoueurs.get(joueurQuiJoue + 1).getMainDuJoueur().ajouter(pioche.piocher());
+        for (int i = 0; i < nb; ++i) {
+            listeJoueurs.get(joueurQuiJoue + 1).getMainDuJoueur().ajouter(pioche.piocher());
+        }
     }
 }
