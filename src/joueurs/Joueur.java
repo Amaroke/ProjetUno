@@ -4,10 +4,10 @@ import cartes.FabriqueCartes;
 import cartes.PaquetDeCartes;
 import uno.Uno;
 
-public class Joueur {
+public abstract class Joueur {
 
     private final PaquetDeCartes mainDuJoueur;
-    private Uno uno;
+    private final Uno uno;
 
     public Joueur(Uno uno) {
         FabriqueCartes singleton = FabriqueCartes.getInstance();
@@ -22,4 +22,6 @@ public class Joueur {
     public Uno getUno() {
         return uno;
     }
+
+    public abstract void jouer(String coup);
 }

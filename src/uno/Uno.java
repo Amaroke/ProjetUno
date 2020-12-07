@@ -2,6 +2,8 @@ package uno;
 
 import cartes.FabriqueCartes;
 import cartes.PaquetDeCartes;
+import joueurs.Bot;
+import joueurs.Humain;
 import joueurs.Joueur;
 
 import java.util.ArrayList;
@@ -27,6 +29,14 @@ public class Uno {
         return sensHorraire;
     }
 
+    public PaquetDeCartes getTalon() {
+        return talon;
+    }
+
+    public PaquetDeCartes getPioche() {
+        return pioche;
+    }
+
     public void initialiser(int nbJoueurs) {
         FabriqueCartes singleton = FabriqueCartes.getInstance();
         talon = singleton.getPaquetVide();
@@ -43,8 +53,9 @@ public class Uno {
         assert (nbJoueurs >= 2) : "Le nombre de joueur n'est pas suffisant (<2).";
         assert (nbJoueurs <= 10) : "Le nombre de joueur est trop élevé (>10).";
         listeJoueurs = new ArrayList<>(4);
-        for (int i = 0; i < nbJoueurs; ++i) {
-            listeJoueurs.add(new Joueur(this));
+        listeJoueurs.add(new Humain(this));
+        for (int i = 1; i < nbJoueurs; ++i) {
+            listeJoueurs.add(new Bot(this));
         }
     }
 

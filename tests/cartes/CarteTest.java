@@ -47,8 +47,6 @@ class CarteTest {
         cartePlus4 = new CartePlus4(uno, null);
     }
 
-    // On ne test pas peutEtreRecouverte, dela reviendrait a tester peutEtrePoserSur.
-
     @Test
     void getValeur() {
         assertEquals(1, carteBleu1.getValeur());

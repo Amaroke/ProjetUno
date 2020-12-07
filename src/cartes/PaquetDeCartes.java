@@ -2,12 +2,17 @@ package cartes;
 
 import uno.Uno;
 
+import javax.annotation.Nonnull;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 
-public class PaquetDeCartes implements Iterable {
+public class PaquetDeCartes implements Iterable<Carte> {
+
+    public ArrayList<Carte> getPaquet() {
+        return paquet;
+    }
 
     private final ArrayList<Carte> paquet;
 
@@ -57,9 +62,9 @@ public class PaquetDeCartes implements Iterable {
 
     public Carte getSommet() {
         if (this.estVide()) {
-            return this.paquet.get(0);
+            return null;
         }
-        return null;
+        return paquet.get(getNombreDeCartes());
     }
 
     public Carte piocher() {
@@ -193,8 +198,8 @@ public class PaquetDeCartes implements Iterable {
         }
     }
 
-    @Override
-    public Iterator iterator() {
+    @Override @Nonnull
+    public Iterator<Carte> iterator() {
         return paquet.iterator();
     }
 }
