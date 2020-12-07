@@ -10,14 +10,14 @@ import java.util.Iterator;
 
 public class PaquetDeCartes implements Iterable<Carte> {
 
-    public ArrayList<Carte> getPaquet() {
-        return paquet;
-    }
-
     private final ArrayList<Carte> paquet;
 
     public PaquetDeCartes() {
         this.paquet = new ArrayList<>();
+    }
+
+    public ArrayList<Carte> getPaquet() {
+        return paquet;
     }
 
     public int getNombreDeCartes() {
@@ -36,14 +36,6 @@ public class PaquetDeCartes implements Iterable<Carte> {
         return s;
     }
 
-    public String toString() {
-        StringBuilder s = new StringBuilder(this.getNombreDeCartes() * 30);
-        for (Carte i : this.paquet) {
-            s.append(i.toString()).append("\n");
-        }
-        return s.toString();
-    }
-
     public void ajouter(Carte... cartes) {
         Collections.addAll(this.paquet, cartes);
     }
@@ -56,9 +48,7 @@ public class PaquetDeCartes implements Iterable<Carte> {
         Collections.shuffle(this.paquet);
     }
 
-    public void retourner() {
-        Collections.reverse(this.paquet);
-    }
+    public void retourner() { Collections.reverse(this.paquet); }
 
     public Carte getSommet() {
         if (this.estVide()) {
@@ -157,7 +147,7 @@ public class PaquetDeCartes implements Iterable<Carte> {
                     this.ajouter(new CarteChangementDeSens(uno, couleur));
                 }
                 if (mots[0].equals("CarteJoker")) {
-                    this.ajouter(new CarteJoker(uno, couleur));
+                    this.ajouter(new CarteJoker(uno));
                 }
                 if (mots[0].equals("CartePasseTonTour")) {
                     if (mots[1].equals("Bleu")) {
@@ -190,7 +180,7 @@ public class PaquetDeCartes implements Iterable<Carte> {
                     this.ajouter(new CartePlus2(uno, couleur));
                 }
                 if (mots[0].equals("CartePlus4")) {
-                    this.ajouter(new CartePlus4(uno, couleur));
+                    this.ajouter(new CartePlus4(uno));
                 }
             }
         } catch (IOException e) {
@@ -198,8 +188,18 @@ public class PaquetDeCartes implements Iterable<Carte> {
         }
     }
 
-    @Override @Nonnull
+    @Override
+    @Nonnull
     public Iterator<Carte> iterator() {
         return paquet.iterator();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder(this.getNombreDeCartes() * 30);
+        for (Carte i : this.paquet) {
+            s.append(i.toString()).append("\n");
+        }
+        return s.toString();
     }
 }

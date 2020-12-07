@@ -24,6 +24,10 @@ public abstract class Carte {
         return couleur;
     }
 
+    public void setCouleur(Couleur couleur) {
+        this.couleur = couleur;
+    }
+
     public abstract boolean peutEtreRecouverte(Carte c);
 
     public abstract int getValeur();

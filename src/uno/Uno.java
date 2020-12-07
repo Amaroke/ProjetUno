@@ -60,11 +60,11 @@ public class Uno {
     }
 
     private void choisirQuiDistribue() {
-        joueurQuiDistribue = (int) (1 + (Math.random() * (getNbJoueurs() - 1)));
+        joueurQuiDistribue = (int) ((Math.random() * (getNbJoueurs())));
     }
 
     public void choisirQuiJoue() {
-        joueurQuiJoue = joueurQuiDistribue == getNbJoueurs() ? 1 : joueurQuiDistribue +1;
+        joueurQuiJoue = joueurQuiDistribue == getNbJoueurs() ? 0 : joueurQuiDistribue +1;
     }
 
     public void distribuerCartes() {

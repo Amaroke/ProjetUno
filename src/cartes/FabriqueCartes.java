@@ -48,8 +48,8 @@ public class FabriqueCartes {
             cartesVertes[i] = new CartePasseTonTour(uno, Couleur.VERT);
         }
         for (int i = 0; i < 4; ++i) {
-            cartesJokers[i] = new CarteJoker(uno, null);
-            cartesPlus4[i] = new CartePlus4(uno, null);
+            cartesJokers[i] = new CarteJoker(uno);
+            cartesPlus4[i] = new CartePlus4(uno);
         }
         pdc.ajouter(cartesBleues);
         pdc.ajouter(cartesRouges);

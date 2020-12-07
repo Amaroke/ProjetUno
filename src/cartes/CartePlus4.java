@@ -3,8 +3,8 @@ package cartes;
 import uno.Uno;
 
 public class CartePlus4 extends Carte {
-    CartePlus4(Uno uno, Couleur couleur) {
-        super(uno, couleur);
+    CartePlus4(Uno uno) {
+        super(uno);
     }
 
     @Override

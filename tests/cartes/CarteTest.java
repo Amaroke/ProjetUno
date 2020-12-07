@@ -43,8 +43,8 @@ class CarteTest {
         carteRougeChangementDeSens = new CarteChangementDeSens(uno, Couleur.ROUGE);
         carteBleuPasseTonTour = new CartePasseTonTour(uno, Couleur.BLEU);
         carteRougePasseTonTour = new CartePasseTonTour(uno, Couleur.ROUGE);
-        carteJoker = new CarteJoker(uno, null);
-        cartePlus4 = new CartePlus4(uno, null);
+        carteJoker = new CarteJoker(uno);
+        cartePlus4 = new CartePlus4(uno);
     }
 
     @Test
@@ -108,6 +108,24 @@ class CarteTest {
     }
 
     @Test
+    void setCouleur() {
+        carteBleu1.setCouleur(Couleur.JAUNE);
+        carteRouge1.setCouleur(Couleur.JAUNE);
+        carteJaune1.setCouleur(Couleur.JAUNE);
+        carteVert1.setCouleur(Couleur.JAUNE);
+        carteBleuPlus2.setCouleur(Couleur.JAUNE);
+        carteBleuChangementDeSens.setCouleur(Couleur.JAUNE);
+        carteBleuPasseTonTour.setCouleur(Couleur.JAUNE);
+        assertEquals(Couleur.JAUNE, carteBleu1.getCouleur());
+        assertEquals(Couleur.JAUNE, carteRouge1.getCouleur());
+        assertEquals(Couleur.JAUNE, carteJaune1.getCouleur());
+        assertEquals(Couleur.JAUNE, carteVert1.getCouleur());
+        assertEquals(Couleur.JAUNE, carteBleuPlus2.getCouleur());
+        assertEquals(Couleur.JAUNE, carteBleuChangementDeSens.getCouleur());
+        assertEquals(Couleur.JAUNE, carteBleuPasseTonTour.getCouleur());
+    }
+
+    @Test
     void estSansCouleur() {
         assertFalse(carteBleu1.estSansCouleur());
         assertFalse(carteBleu2.estSansCouleur());
@@ -129,7 +147,12 @@ class CarteTest {
 
     @Test
     void appliquerEffet() {
-        // Test à écrire.
+        carteBleu1.appliquerEffet();
+        carteBleuPlus2.appliquerEffet();
+        carteBleuChangementDeSens.appliquerEffet();
+        carteBleuPasseTonTour.appliquerEffet();
+        carteJoker.appliquerEffet();
+        cartePlus4.appliquerEffet();
     }
 
     @Test
