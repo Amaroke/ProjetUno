@@ -2,6 +2,7 @@ package uno;
 
 import cartes.FabriqueCartes;
 import cartes.PaquetDeCartes;
+import dialogue.DialogueLigneDeCommande;
 import joueurs.Bot;
 import joueurs.Humain;
 import joueurs.Joueur;
@@ -17,6 +18,7 @@ public class Uno {
     private boolean sensHorraire;
     private PaquetDeCartes pioche;
     private PaquetDeCartes talon;
+    private DialogueLigneDeCommande dial;
 
     public Uno() {
     }
@@ -35,6 +37,10 @@ public class Uno {
 
     public PaquetDeCartes getPioche() {
         return pioche;
+    }
+
+    public void setDialogue(DialogueLigneDeCommande dial) {
+        this.dial = dial;
     }
 
     public void initialiser(int nbJoueurs) {

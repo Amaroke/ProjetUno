@@ -54,11 +54,11 @@ public class PaquetDeCartes implements Iterable<Carte> {
         if (this.estVide()) {
             return null;
         }
-        return paquet.get(getNombreDeCartes());
+        return paquet.get(getNombreDeCartes()-1);
     }
 
     public Carte piocher() {
-        if (this.estVide()) {
+        if (!this.estVide()) {
             Carte c = this.paquet.get(0);
             this.paquet.remove(0);
             return c;
