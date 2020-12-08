@@ -93,7 +93,7 @@ public class Uno {
     }
 
     public void choisirQuiJoue() {
-        joueurQuiJoue = joueurQuiDistribue == getNbJoueurs() ? 0 : joueurQuiDistribue + 1;
+        joueurQuiJoue = getJoueurQuiDistribue() == getNbJoueurs() ? 0 : getJoueurQuiDistribue() + 1;
     }
 
     public void distribuerCartes() {
