@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 class UnoTest {
 
     @Test
-    void initialiser() {
+    void choisirQuiJoue() {
     }
 
     @Test
@@ -13,10 +13,14 @@ class UnoTest {
     }
 
     @Test
-    void choisirQuiJoue() {
+    void changerDeSens() {
     }
 
     @Test
-    void nbJoueurs() {
+    void changerDeJoueur() {
+    }
+
+    @Test
+    void distribuerCartesJoueurSuivant() {
     }
 }

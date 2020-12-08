@@ -6,6 +6,7 @@ import dialogue.DialogueLigneDeCommande;
 import joueurs.Bot;
 import joueurs.Humain;
 import joueurs.Joueur;
+import joueurs.StrategieFacile;
 
 import java.util.ArrayList;
 
@@ -61,7 +62,7 @@ public class Uno {
         listeJoueurs = new ArrayList<>(4);
         listeJoueurs.add(new Humain(this));
         for (int i = 1; i < nbJoueurs; ++i) {
-            listeJoueurs.add(new Bot(this));
+            listeJoueurs.add(new Bot(this, new StrategieFacile()));
         }
     }
 
@@ -70,7 +71,7 @@ public class Uno {
     }
 
     public void choisirQuiJoue() {
-        joueurQuiJoue = joueurQuiDistribue == getNbJoueurs() ? 0 : joueurQuiDistribue +1;
+        joueurQuiJoue = joueurQuiDistribue == getNbJoueurs() ? 0 : joueurQuiDistribue + 1;
     }
 
     public void distribuerCartes() {
@@ -89,8 +90,7 @@ public class Uno {
     public void changerDeJoueur() {
         if (getSensHorraire()) {
             joueurQuiJoue = (joueurQuiJoue == getNbJoueurs()) ? 1 : joueurQuiJoue + 1;
-        }
-        else {
+        } else {
             joueurQuiJoue = (joueurQuiJoue == 1) ? getNbJoueurs() : joueurQuiJoue - 1;
         }
     }

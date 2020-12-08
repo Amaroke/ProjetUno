@@ -48,13 +48,15 @@ public class PaquetDeCartes implements Iterable<Carte> {
         Collections.shuffle(this.paquet);
     }
 
-    public void retourner() { Collections.reverse(this.paquet); }
+    public void retourner() {
+        Collections.reverse(this.paquet);
+    }
 
     public Carte getSommet() {
         if (this.estVide()) {
             return null;
         }
-        return paquet.get(getNombreDeCartes()-1);
+        return paquet.get(getNombreDeCartes() - 1);
     }
 
     public Carte piocher() {

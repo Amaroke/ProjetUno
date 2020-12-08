@@ -1,4 +1,11 @@
 package joueurs;
 
-public class StrategieFacile {
+import cartes.PaquetDeCartes;
+
+public class StrategieFacile implements Strategie {
+
+    @Override
+    public void jouer(PaquetDeCartes mainDuBot) {
+
+    }
 }
