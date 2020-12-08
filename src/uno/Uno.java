@@ -12,32 +12,56 @@ import java.util.ArrayList;
 
 public class Uno {
 
-    private int nbJoueurs;
     private ArrayList<Joueur> listeJoueurs;
     private int joueurQuiJoue;
     private int joueurQuiDistribue;
-    private boolean sensHorraire;
+    private boolean sensHoraire;
     private PaquetDeCartes pioche;
     private PaquetDeCartes talon;
     private DialogueLigneDeCommande dial;
 
     public Uno() {
+        sensHoraire = true;
     }
 
     public int getNbJoueurs() {
-        return nbJoueurs;
+        return listeJoueurs.size();
     }
 
-    public boolean getSensHorraire() {
-        return sensHorraire;
+    public Joueur getJoueurs(int nb) {
+        return listeJoueurs.get(nb-1);
+    }
+
+    public int getJoueurQuiDistribue() {
+        return joueurQuiDistribue;
+    }
+
+    public void setJoueurQuiDistribue(int joueurQuiDistribue) {
+        this.joueurQuiDistribue = joueurQuiDistribue;
+    }
+
+    public int getJoueurQuiJoue() {
+        return joueurQuiJoue;
+    }
+
+    public boolean getSensHoraire() {
+        return sensHoraire;
     }
 
     public PaquetDeCartes getTalon() {
         return talon;
     }
 
+    public void setTalon(PaquetDeCartes talon) {
+        this.talon = talon;
+    }
+
     public PaquetDeCartes getPioche() {
         return pioche;
+    }
+
+    public void setPioche(PaquetDeCartes pioche) {
+        this.pioche = pioche;
     }
 
     public void setDialogue(DialogueLigneDeCommande dial) {
@@ -48,25 +72,23 @@ public class Uno {
         FabriqueCartes singleton = FabriqueCartes.getInstance();
         talon = singleton.getPaquetVide();
         pioche = singleton.getPaquetDeUno();
-        sensHorraire = true;
-        this.nbJoueurs = nbJoueurs;
         creerLesJoueurs(nbJoueurs);
         distribuerCartes();
         choisirQuiDistribue();
         choisirQuiJoue();
     }
 
-    private void creerLesJoueurs(int nbJoueurs) {
+    public void creerLesJoueurs(int nbJoueurs) {
         assert (nbJoueurs >= 2) : "Le nombre de joueur n'est pas suffisant (<2).";
         assert (nbJoueurs <= 10) : "Le nombre de joueur est trop élevé (>10).";
-        listeJoueurs = new ArrayList<>(4);
+        listeJoueurs = new ArrayList<>(nbJoueurs);
         listeJoueurs.add(new Humain(this));
         for (int i = 1; i < nbJoueurs; ++i) {
             listeJoueurs.add(new Bot(this, new StrategieFacile()));
         }
     }
 
-    private void choisirQuiDistribue() {
+    public void choisirQuiDistribue() {
         joueurQuiDistribue = (int) ((Math.random() * (getNbJoueurs())));
     }
 
@@ -75,20 +97,21 @@ public class Uno {
     }
 
     public void distribuerCartes() {
+        this.pioche.melanger();
         for (int i = 0; i < 7; ++i) {
-            for (int j = 0; j < getNbJoueurs(); ++i) {
-                listeJoueurs.get(j).getMainDuJoueur().ajouter(talon.piocher());
+            for (int j = 0; j < getNbJoueurs(); ++j) {
+                listeJoueurs.get(j).getMainDuJoueur().ajouter(pioche.piocher());
             }
         }
-        this.pioche.ajouter(this.talon.piocher());
+        talon.ajouter(pioche.piocher());
     }
 
     public void changerDeSens() {
-        sensHorraire = !sensHorraire;
+        sensHoraire = !sensHoraire;
     }
 
     public void changerDeJoueur() {
-        if (getSensHorraire()) {
+        if (getSensHoraire()) {
             joueurQuiJoue = (joueurQuiJoue == getNbJoueurs()) ? 1 : joueurQuiJoue + 1;
         } else {
             joueurQuiJoue = (joueurQuiJoue == 1) ? getNbJoueurs() : joueurQuiJoue - 1;
