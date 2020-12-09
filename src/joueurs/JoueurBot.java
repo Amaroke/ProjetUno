@@ -2,11 +2,11 @@ package joueurs;
 
 import uno.Uno;
 
-public class Bot extends Joueur {
+public class JoueurBot extends JoueurHumain {
 
     private final Strategie strategie;
 
-    public Bot(Uno uno, Strategie strategie) {
+    public JoueurBot(Uno uno, Strategie strategie) {
         super(uno);
         this.strategie = strategie;
     }

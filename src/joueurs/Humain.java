@@ -2,7 +2,7 @@ package joueurs;
 
 import uno.Uno;
 
-public class Humain extends Joueur {
+public class Humain extends JoueurHumain {
 
     public Humain(Uno uno) {
         super(uno);

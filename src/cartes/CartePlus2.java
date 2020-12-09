@@ -3,7 +3,7 @@ package cartes;
 import uno.Uno;
 
 public class CartePlus2 extends Carte {
-    CartePlus2(Uno uno, Couleur couleur) {
+    public CartePlus2(Uno uno, Couleur couleur) {
         super(uno, couleur);
     }
 

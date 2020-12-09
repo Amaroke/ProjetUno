@@ -3,16 +3,16 @@ package uno;
 import cartes.FabriqueCartes;
 import cartes.PaquetDeCartes;
 import dialogue.DialogueLigneDeCommande;
-import joueurs.Bot;
+import joueurs.JoueurBot;
 import joueurs.Humain;
-import joueurs.Joueur;
+import joueurs.JoueurHumain;
 import joueurs.StrategieFacile;
 
 import java.util.ArrayList;
 
 public class Uno {
 
-    private ArrayList<Joueur> listeJoueurs;
+    private ArrayList<JoueurHumain> listeJoueurs;
     private int joueurQuiJoue;
     private int joueurQuiDistribue;
     private boolean sensHoraire;
@@ -28,7 +28,7 @@ public class Uno {
         return listeJoueurs.size();
     }
 
-    public Joueur getJoueurs(int nb) {
+    public JoueurHumain getJoueurs(int nb) {
         return listeJoueurs.get(nb-1);
     }
 
@@ -84,7 +84,7 @@ public class Uno {
         listeJoueurs = new ArrayList<>(nbJoueurs);
         listeJoueurs.add(new Humain(this));
         for (int i = 1; i < nbJoueurs; ++i) {
-            listeJoueurs.add(new Bot(this, new StrategieFacile()));
+            listeJoueurs.add(new JoueurBot(this, new StrategieFacile()));
         }
     }
 

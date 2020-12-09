@@ -3,7 +3,7 @@ package cartes;
 import uno.Uno;
 
 public class CartePlus4 extends Carte {
-    CartePlus4(Uno uno) {
+    public CartePlus4(Uno uno) {
         super(uno);
     }
 

@@ -5,7 +5,7 @@ import uno.Uno;
 public class CarteChiffre extends Carte {
     private final int chiffre;
 
-    CarteChiffre(Uno uno, Couleur couleur, int chiffre) {
+    public CarteChiffre(Uno uno, Couleur couleur, int chiffre) {
         super(uno, couleur);
         this.chiffre = chiffre;
     }

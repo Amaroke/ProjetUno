@@ -4,7 +4,7 @@ import uno.Uno;
 
 public class CarteChangementDeSens extends Carte {
 
-    CarteChangementDeSens(Uno uno, Couleur couleur) {
+    public CarteChangementDeSens(Uno uno, Couleur couleur) {
         super(uno, couleur);
     }
 
