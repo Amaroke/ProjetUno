@@ -2,7 +2,7 @@ package joueurs;
 
 import uno.Uno;
 
-public class JoueurBot extends JoueurHumain {
+public class JoueurBot extends Joueur {
 
     private final Strategie strategie;
 

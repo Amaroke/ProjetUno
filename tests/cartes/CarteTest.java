@@ -146,16 +146,6 @@ class CarteTest {
     }
 
     @Test
-    void appliquerEffet() {
-        carteBleu1.appliquerEffet();
-        carteBleuPlus2.appliquerEffet();
-        carteBleuChangementDeSens.appliquerEffet();
-        carteBleuPasseTonTour.appliquerEffet();
-        carteJoker.appliquerEffet();
-        cartePlus4.appliquerEffet();
-    }
-
-    @Test
     void estDeCouleurCompatible() {
         assertTrue(carteBleu1.estDeCouleurCompatible(Couleur.BLEU));
         assertFalse(carteBleu1.estDeCouleurCompatible(Couleur.ROUGE));

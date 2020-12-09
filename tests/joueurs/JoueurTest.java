@@ -11,24 +11,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class JoueurTest {
 
     Uno uno;
-    Humain humain;
+    JoueurHumain humain;
 
     @BeforeEach
     void init() {
         uno = new Uno();
-        humain = new Humain(uno);
-    }
-
-    @Test
-    void getMainDuJoueur() {
-    }
-
-    @Test
-    void getUno() {
-    }
-
-    @Test
-    void jouer() {
+        humain = new JoueurHumain(uno);
     }
 
     @Test

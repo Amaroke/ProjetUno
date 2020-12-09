@@ -10,17 +10,7 @@ CarteChiffre Bleu 4
 CarteChiffre Bleu 5
 CarteChiffre Bleu 5
 CarteChiffre Bleu 6
-CarteChiffre Bleu 6if (mabite) {
-[17:47]
-f
-[17:47]
-} else {(modifié)
-[17:47]
-pute
-[17:47]
-}
-[17:48]
-mabite ? f : pute
+CarteChiffre Bleu 6
 CarteChiffre Bleu 7
 CarteChiffre Bleu 7
 CarteChiffre Bleu 8

@@ -5,7 +5,7 @@ import cartes.PaquetDeCartes;
 public class StrategieMoyen implements Strategie {
 
     @Override
-    public void jouer(PaquetDeCartes pdc){
+    public void jouer(PaquetDeCartes pdc) {
 
     }
 }

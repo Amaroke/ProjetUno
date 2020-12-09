@@ -3,8 +3,8 @@ package uno;
 import cartes.FabriqueCartes;
 import cartes.PaquetDeCartes;
 import dialogue.DialogueLigneDeCommande;
+import joueurs.Joueur;
 import joueurs.JoueurBot;
-import joueurs.Humain;
 import joueurs.JoueurHumain;
 import joueurs.StrategieFacile;
 
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class Uno {
 
-    private ArrayList<JoueurHumain> listeJoueurs;
+    private ArrayList<Joueur> listeJoueurs;
     private int joueurQuiJoue;
     private int joueurQuiDistribue;
     private boolean sensHoraire;
@@ -28,8 +28,8 @@ public class Uno {
         return listeJoueurs.size();
     }
 
-    public JoueurHumain getJoueurs(int nb) {
-        return listeJoueurs.get(nb-1);
+    public Joueur getJoueurs(int nb) {
+        return listeJoueurs.get(nb - 1);
     }
 
     public int getJoueurQuiDistribue() {
@@ -82,7 +82,7 @@ public class Uno {
         assert (nbJoueurs >= 2) : "Le nombre de joueur n'est pas suffisant (<2).";
         assert (nbJoueurs <= 10) : "Le nombre de joueur est trop élevé (>10).";
         listeJoueurs = new ArrayList<>(nbJoueurs);
-        listeJoueurs.add(new Humain(this));
+        listeJoueurs.add(new JoueurHumain(this));
         for (int i = 1; i < nbJoueurs; ++i) {
             listeJoueurs.add(new JoueurBot(this, new StrategieFacile()));
         }
