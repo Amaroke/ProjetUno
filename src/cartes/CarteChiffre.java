@@ -27,7 +27,6 @@ public class CarteChiffre extends Carte {
 
     @Override
     public void appliquerEffet() {
-        getUno().changerDeJoueur();
     }
 
     @Override
@@ -37,6 +36,6 @@ public class CarteChiffre extends Carte {
 
     @Override
     public String toString() {
-        return "Carte Chiffre de couleur " + getCouleur() + " et de valeur " + getValeur();
+        return getValeur() + " " + getCouleur();
     }
 }

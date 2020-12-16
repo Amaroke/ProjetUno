@@ -24,7 +24,7 @@ public class CartePasseTonTour extends Carte {
 
     @Override
     public void appliquerEffet() {
-        getUno().changerDeJoueur();
+
     }
 
     @Override
@@ -34,6 +34,6 @@ public class CartePasseTonTour extends Carte {
 
     @Override
     public String toString() {
-        return "Carte PasseTonTour de couleur " + getCouleur();
+        return "Passe ton tour " + getCouleur();
     }
 }

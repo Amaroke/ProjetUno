@@ -21,6 +21,8 @@ public abstract class Joueur {
         this.uno = uno;
     }
 
+    public abstract boolean estUnJoueurHumain();
+
     public PaquetDeCartes getMainDuJoueur() {
         return mainDuJoueur;
     }

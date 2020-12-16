@@ -24,7 +24,7 @@ public class CarteJoker extends Carte {
 
     @Override
     public void appliquerEffet() {
-        getUno().changerDeJoueur();
+
     }
 
     @Override
@@ -34,6 +34,9 @@ public class CarteJoker extends Carte {
 
     @Override
     public String toString() {
-        return "Carte Joker";
+        if (getCouleur() != null) {
+            return "Joker " + getCouleur();
+        }
+        return "Joker";
     }
 }

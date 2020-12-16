@@ -25,7 +25,6 @@ public class CartePlus4 extends Carte {
     @Override
     public void appliquerEffet() {
         getUno().distribuerCartesJoueurSuivant(4);
-        getUno().changerDeJoueur();
     }
 
     @Override
@@ -35,6 +34,9 @@ public class CartePlus4 extends Carte {
 
     @Override
     public String toString() {
-        return "Carte Plus4";
+        if (getCouleur() != null) {
+            return "+4 " + getCouleur();
+        }
+        return "+4";
     }
 }

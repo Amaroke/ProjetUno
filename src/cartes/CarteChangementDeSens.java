@@ -26,7 +26,6 @@ public class CarteChangementDeSens extends Carte {
     @Override
     public void appliquerEffet() {
         getUno().changerDeSens();
-        getUno().changerDeJoueur();
     }
 
     @Override
@@ -36,6 +35,6 @@ public class CarteChangementDeSens extends Carte {
 
     @Override
     public String toString() {
-        return "Carte ChangementDeSens de couleur " + getCouleur();
+        return "Changement de sens " + getCouleur();
     }
 }

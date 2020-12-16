@@ -22,7 +22,7 @@ class PaquetDeCartesTest {
     void init() {
         uno = new Uno();
         singleton = FabriqueCartes.getInstance();
-        paquetUno = singleton.getPaquetDeUno();
+        paquetUno = singleton.getPaquetDeUno(uno);
         paquetVide = singleton.getPaquetVide();
     }
 

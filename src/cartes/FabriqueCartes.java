@@ -14,8 +14,7 @@ public class FabriqueCartes {
         return new PaquetDeCartes();
     }
 
-    public PaquetDeCartes getPaquetDeUno() {
-        Uno uno = new Uno();
+    public PaquetDeCartes getPaquetDeUno(Uno uno) {
         PaquetDeCartes pdc = new PaquetDeCartes();
         Carte[] cartesBleues = new Carte[25];
         Carte[] cartesRouges = new Carte[25];

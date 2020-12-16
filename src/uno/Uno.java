@@ -3,13 +3,18 @@ package uno;
 import cartes.FabriqueCartes;
 import cartes.PaquetDeCartes;
 import dialogue.DialogueLigneDeCommande;
-import joueurs.*;
+import erreurs.CoupIncorrectException;
+import joueurs.Joueur;
+import joueurs.JoueurBot;
+import joueurs.JoueurHumain;
+import joueurs.StrategieFacile;
 
 import java.util.ArrayList;
 
 public class Uno {
 
     private ArrayList<Joueur> listeJoueurs;
+    private int nbJoueurs;
     private int joueurQuiJoue;
     private int joueurQuiDistribue;
     private boolean sensHoraire;
@@ -23,10 +28,10 @@ public class Uno {
     }
 
     public int getNbJoueurs() {
-        return listeJoueurs.size();
+        return nbJoueurs;
     }
 
-    public Joueur getJoueurs(int nb) {
+    public Joueur getJoueur(int nb) {
         return listeJoueurs.get(nb - 1);
     }
 
@@ -40,6 +45,10 @@ public class Uno {
 
     public int getJoueurQuiJoue() {
         return joueurQuiJoue;
+    }
+
+    public Joueur joueurQuiJoue() {
+        return getJoueur(getJoueurQuiJoue());
     }
 
     public boolean getSensHoraire() {
@@ -78,7 +87,8 @@ public class Uno {
         jeuTerminee = false;
         FabriqueCartes singleton = FabriqueCartes.getInstance();
         talon = singleton.getPaquetVide();
-        pioche = singleton.getPaquetDeUno();
+        pioche = singleton.getPaquetDeUno(this);
+        pioche.melanger();
         creerLesJoueurs(nbJoueurs);
         distribuerCartes();
         choisirQuiDistribue();
@@ -88,6 +98,7 @@ public class Uno {
     public void creerLesJoueurs(int nbJoueurs) {
         assert (nbJoueurs >= 2) : "Le nombre de joueur n'est pas suffisant (<2).";
         assert (nbJoueurs <= 10) : "Le nombre de joueur est trop élevé (>10).";
+        this.nbJoueurs = nbJoueurs;
         listeJoueurs = new ArrayList<>(nbJoueurs);
         listeJoueurs.add(new JoueurHumain(this));
         for (int i = 1; i < nbJoueurs; ++i) {
@@ -104,7 +115,6 @@ public class Uno {
     }
 
     public void distribuerCartes() {
-        this.pioche.melanger();
         for (int i = 0; i < 7; ++i) {
             for (int j = 0; j < getNbJoueurs(); ++j) {
                 listeJoueurs.get(j).getMainDuJoueur().ajouter(pioche.piocher());
@@ -126,16 +136,47 @@ public class Uno {
     }
 
     public void distribuerCartesJoueurSuivant(int nb) {
-        for (int i = 0; i < nb; ++i) {
-            listeJoueurs.get(joueurQuiJoue + 1).getMainDuJoueur().ajouter(pioche.piocher());
+        if (getJoueurQuiJoue() == getNbJoueurs() - 1) {
+            for (int i = 0; i < nb; ++i) {
+                listeJoueurs.get(0).getMainDuJoueur().ajouter(pioche.piocher());
+            }
+        } else {
+            for (int i = 0; i < nb; ++i) {
+                listeJoueurs.get(joueurQuiJoue + 1).getMainDuJoueur().ajouter(pioche.piocher());
+            }
         }
     }
 
     public void jeu() {
         DialogueLigneDeCommande dial = new DialogueLigneDeCommande(this);
         setDialogue(dial);
-        while(!isJeuTerminee()) {
-
+        while (!isJeuTerminee()) {
+            getDial().mettreAJour();
+            if (joueurQuiJoue().estUnJoueurHumain()) {
+                boolean coupIncorrect = true;
+                while (coupIncorrect) {
+                    try {
+                        joueurQuiJoue().jouer(getDial().taperUnChoix());
+                        coupIncorrect = false;
+                    } catch (CoupIncorrectException e) {
+                        getDial().afficherErreur(e.getMessage());
+                    } catch (NumberFormatException e) {
+                        getDial().afficherErreur("Il est un peu grand ton nombre là...");
+                    }
+                }
+            } else {
+                boolean coupIncorrect = true;
+                while (coupIncorrect) {
+                    try {
+                        joueurQuiJoue().jouer("");
+                        coupIncorrect = false;
+                    } catch (CoupIncorrectException e) {
+                        e.printStackTrace();
+                    }
+                }
+                getDial().pauseBot();
+            }
+            changerDeJoueur();
         }
     }
 }

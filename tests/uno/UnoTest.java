@@ -33,11 +33,11 @@ class UnoTest {
     @Test
     void distribuerCartes() {
         uno.creerLesJoueurs(2);
-        uno.setPioche(singleton.getPaquetDeUno());
+        uno.setPioche(singleton.getPaquetDeUno(uno));
         uno.setTalon(singleton.getPaquetVide());
         uno.distribuerCartes();
-        assertEquals(uno.getJoueurs(1).getMainDuJoueur().getNombreDeCartes(), 7);
-        assertEquals(uno.getJoueurs(2).getMainDuJoueur().getNombreDeCartes(), 7);
+        assertEquals(uno.getJoueur(1).getMainDuJoueur().getNombreDeCartes(), 7);
+        assertEquals(uno.getJoueur(2).getMainDuJoueur().getNombreDeCartes(), 7);
         assertEquals(uno.getPioche().getNombreDeCartes(), 93);
     }
 
@@ -59,12 +59,12 @@ class UnoTest {
     @Test
     void distribuerCartesJoueurSuivant() {
         uno.creerLesJoueurs(2);
-        uno.setPioche(singleton.getPaquetDeUno());
+        uno.setPioche(singleton.getPaquetDeUno(uno));
         uno.setTalon(singleton.getPaquetVide());
         uno.setJoueurQuiDistribue(2);
         uno.choisirQuiJoue();
         uno.distribuerCartesJoueurSuivant(4);
-        assertEquals(uno.getJoueurs(2).getMainDuJoueur().getNombreDeCartes(), 4);
+        assertEquals(uno.getJoueur(2).getMainDuJoueur().getNombreDeCartes(), 4);
         assertEquals(uno.getPioche().getNombreDeCartes(), 104);
     }
 }

@@ -16,6 +16,11 @@ public class JoueurBot extends Joueur {
     }
 
     @Override
+    public boolean estUnJoueurHumain() {
+        return false;
+    }
+
+    @Override
     public void jouer(String coup) {
         getStrategie().jouer(getMainDuJoueur());
     }
