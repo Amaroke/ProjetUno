@@ -3,10 +3,7 @@ package uno;
 import cartes.FabriqueCartes;
 import cartes.PaquetDeCartes;
 import dialogue.DialogueLigneDeCommande;
-import joueurs.Joueur;
-import joueurs.JoueurBot;
-import joueurs.JoueurHumain;
-import joueurs.StrategieFacile;
+import joueurs.*;
 
 import java.util.ArrayList;
 
@@ -19,6 +16,7 @@ public class Uno {
     private PaquetDeCartes pioche;
     private PaquetDeCartes talon;
     private DialogueLigneDeCommande dial;
+    private boolean jeuTerminee;
 
     public Uno() {
         sensHoraire = true;
@@ -52,6 +50,14 @@ public class Uno {
         return talon;
     }
 
+    public DialogueLigneDeCommande getDial() {
+        return dial;
+    }
+
+    public boolean isJeuTerminee() {
+        return jeuTerminee;
+    }
+
     public void setTalon(PaquetDeCartes talon) {
         this.talon = talon;
     }
@@ -69,6 +75,7 @@ public class Uno {
     }
 
     public void initialiser(int nbJoueurs) {
+        jeuTerminee = false;
         FabriqueCartes singleton = FabriqueCartes.getInstance();
         talon = singleton.getPaquetVide();
         pioche = singleton.getPaquetDeUno();
@@ -121,6 +128,14 @@ public class Uno {
     public void distribuerCartesJoueurSuivant(int nb) {
         for (int i = 0; i < nb; ++i) {
             listeJoueurs.get(joueurQuiJoue + 1).getMainDuJoueur().ajouter(pioche.piocher());
+        }
+    }
+
+    public void jeu() {
+        DialogueLigneDeCommande dial = new DialogueLigneDeCommande(this);
+        setDialogue(dial);
+        while(!isJeuTerminee()) {
+
         }
     }
 }
