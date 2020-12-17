@@ -1,5 +1,9 @@
 package dialogue;
 
+import joueurs.Strategie;
+import joueurs.StrategieDifficile;
+import joueurs.StrategieFacile;
+import joueurs.StrategieMoyen;
 import uno.Uno;
 
 import java.util.InputMismatchException;
@@ -22,6 +26,7 @@ public class DialogueLigneDeCommande {
         this.uno = uno;
         int nbJoueurs = 0;
         int strategie;
+        Strategie strategieChoisie = null;
         while (!choixJoueurCorrect) {
             try {
                 System.out.println("Bienvenue dans cette partie de Uno !");
@@ -43,13 +48,24 @@ public class DialogueLigneDeCommande {
                 strategie = scanner.nextInt();
                 if (strategie >= 1 && strategie <= 3) {
                     choixStrategieCorrect = true;
+                    switch(strategie) {
+                        case 1 :
+                            strategieChoisie = new StrategieFacile();
+                            break;
+                        case 2 :
+                            strategieChoisie = new StrategieMoyen();
+                            break;
+                        case 3 :
+                            strategieChoisie = new StrategieDifficile();
+                            break;
+                    }
                 }
             } catch (InputMismatchException e) {
                 System.out.println("\nExcuse-moi, mais ce n'est pas un nombre ou alors il est un peu grand...\n");
                 scanner = new Scanner(System.in);
             }
         }
-        this.uno.initialiser(nbJoueurs);
+        this.uno.initialiser(nbJoueurs, strategieChoisie);
     }
 
     public void mettreAJour() {

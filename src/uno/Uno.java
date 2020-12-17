@@ -4,10 +4,7 @@ import cartes.FabriqueCartes;
 import cartes.PaquetDeCartes;
 import dialogue.DialogueLigneDeCommande;
 import erreurs.CoupIncorrectException;
-import joueurs.Joueur;
-import joueurs.JoueurBot;
-import joueurs.JoueurHumain;
-import joueurs.StrategieFacile;
+import joueurs.*;
 
 import java.util.ArrayList;
 
@@ -83,26 +80,26 @@ public class Uno {
         this.dial = dial;
     }
 
-    public void initialiser(int nbJoueurs) {
+    public void initialiser(int nbJoueurs, Strategie strategie) {
         jeuTerminee = false;
         FabriqueCartes singleton = FabriqueCartes.getInstance();
         talon = singleton.getPaquetVide();
         pioche = singleton.getPaquetDeUno(this);
         pioche.melanger();
-        creerLesJoueurs(nbJoueurs);
+        creerLesJoueurs(nbJoueurs, strategie);
         distribuerCartes();
         choisirQuiDistribue();
         choisirQuiJoue();
     }
 
-    public void creerLesJoueurs(int nbJoueurs) {
+    public void creerLesJoueurs(int nbJoueurs, Strategie strategie) {
         assert (nbJoueurs >= 2) : "Le nombre de joueur n'est pas suffisant (<2).";
         assert (nbJoueurs <= 10) : "Le nombre de joueur est trop élevé (>10).";
         this.nbJoueurs = nbJoueurs;
         listeJoueurs = new ArrayList<>(nbJoueurs);
         listeJoueurs.add(new JoueurHumain(this));
         for (int i = 1; i < nbJoueurs; ++i) {
-            listeJoueurs.add(new JoueurBot(this, new StrategieFacile()));
+            listeJoueurs.add(new JoueurBot(this, strategie));
         }
     }
 

@@ -23,7 +23,7 @@ class JoueurHumainTest {
 
     @Test
     void jouer() throws CoupIncorrectException {
-        uno.creerLesJoueurs(2);
+        uno.creerLesJoueurs(2, new StrategieFacile());
         uno.setPioche(singleton.getPaquetDeUno(uno));
         uno.setTalon(singleton.getPaquetVide());
         uno.setJoueurQuiDistribue(2);
