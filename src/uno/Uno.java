@@ -4,7 +4,10 @@ import cartes.FabriqueCartes;
 import cartes.PaquetDeCartes;
 import dialogue.DialogueLigneDeCommande;
 import erreurs.CoupIncorrectException;
-import joueurs.*;
+import joueurs.Joueur;
+import joueurs.JoueurBot;
+import joueurs.JoueurHumain;
+import joueurs.Strategie;
 
 import java.util.ArrayList;
 
@@ -18,6 +21,8 @@ public class Uno {
     private PaquetDeCartes pioche;
     private PaquetDeCartes talon;
     private DialogueLigneDeCommande dial;
+
+
     private boolean jeuTerminee;
 
     public Uno() {
@@ -62,6 +67,10 @@ public class Uno {
 
     public boolean isJeuTerminee() {
         return jeuTerminee;
+    }
+
+    public void setJeuTerminee(boolean jeuTerminee) {
+        this.jeuTerminee = jeuTerminee;
     }
 
     public void setTalon(PaquetDeCartes talon) {
@@ -133,13 +142,13 @@ public class Uno {
     }
 
     public void distribuerCartesJoueurSuivant(int nb) {
-        if (getJoueurQuiJoue() == getNbJoueurs() - 1) {
+        if (getJoueurQuiJoue() == getNbJoueurs()) {
             for (int i = 0; i < nb; ++i) {
                 listeJoueurs.get(0).getMainDuJoueur().ajouter(pioche.piocher());
             }
         } else {
             for (int i = 0; i < nb; ++i) {
-                listeJoueurs.get(joueurQuiJoue + 1).getMainDuJoueur().ajouter(pioche.piocher());
+                listeJoueurs.get(joueurQuiJoue).getMainDuJoueur().ajouter(pioche.piocher());
             }
         }
     }
@@ -172,6 +181,12 @@ public class Uno {
                     }
                 }
                 getDial().pauseBot();
+            }
+            for (int i = 0; i < getNbJoueurs(); i++) {
+                if (getJoueur(i+1).getMainDuJoueur().getNombreDeCartes() == 0 || getPioche().getNombreDeCartes() == 0) {
+                        getDial().afficherScore(i, getJoueur(i+1).getMainDuJoueur().getValeur());
+                    setJeuTerminee(true);
+                }
             }
             changerDeJoueur();
         }

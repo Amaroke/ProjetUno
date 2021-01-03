@@ -1,5 +1,6 @@
 package joueurs;
 
+import erreurs.CoupIncorrectException;
 import uno.Uno;
 
 public class JoueurBot extends Joueur {
@@ -21,8 +22,8 @@ public class JoueurBot extends Joueur {
     }
 
     @Override
-    public void jouer(String coup) {
-        getStrategie().jouer(getMainDuJoueur());
+    public void jouer(String coup) throws CoupIncorrectException {
+        getStrategie().jouer(getMainDuJoueur(), getUno());
     }
 
 }

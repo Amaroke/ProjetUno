@@ -33,6 +33,7 @@ public class JoueurHumain extends Joueur {
             Carte cartePiocher = getUno().getPioche().piocher();
             // Si la carte piocher peut-être joué on la joue.
             if (getUno().getTalon().getSommet().peutEtreRecouverte(cartePiocher)) {
+                // Si c'est une carte qui doit prendre une couleur, on la demande au joueur
                 if (cartePiocher.effet() == 3 || cartePiocher.effet() == 6) {
                     switch (getUno().getDial().choisirCouleurCartePioche().charAt(0)) {
                         case 'r':
