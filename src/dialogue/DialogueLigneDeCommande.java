@@ -29,7 +29,7 @@ public class DialogueLigneDeCommande {
         Strategie strategieChoisie = null;
         while (!choixJoueurCorrect) {
             try {
-                System.out.println("Bienvenue dans cette partie de Uno !");
+                System.out.println("Bienvenue dans cette partie de Uno ! \uD83E\uDD2A");
                 System.out.println("À combien de joueur voulez-vous jouer ?");
                 System.out.print("Entre 2 et 10 : ");
                 nbJoueurs = scanner.nextInt();
@@ -70,8 +70,8 @@ public class DialogueLigneDeCommande {
 
     public void mettreAJour() {
         System.out.println("Il reste " + getUno().getPioche().getNombreDeCartes() + " cartes dans la pioche.\n");
-        for(int i = 2; i <= uno.getNbJoueurs(); ++i) {
-            System.out.println("Vous pouvez voir qu'il reste "+getUno().getJoueur(i).getMainDuJoueur().getNombreDeCartes()+" cartes dans la main du joueur "+ i+".");
+        for (int i = 2; i <= uno.getNbJoueurs(); ++i) {
+            System.out.println("Vous pouvez voir qu'il reste " + getUno().getJoueur(i).getMainDuJoueur().getNombreDeCartes() + " cartes dans la main du joueur " + i + ".");
         }
         System.out.println("\nLa carte en haut du talon est : " + getUno().getTalon().getSommet());
         System.out.println("\nVotre main est la suivante :");
@@ -105,14 +105,30 @@ public class DialogueLigneDeCommande {
         System.out.println("Le joueur " + n + " à un score de : " + nb);
     }
 
-    public void finDuJeu(){
+    public void afficherMonScore(int nb) {
+        System.out.println("Votre score est de : " + nb);
+    }
+
+    public void finDuJeu() {
         System.out.println("\nLa partie est terminée ! Merci d'avoir joué !");
     }
 
-    public String choisirCouleurCartePioche() {
+    public String choisirCouleurCartePiocheJoker() {
         List<String> couleurs = List.of("r", "v", "b", "j");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Vous avez pioché un Joker et vous allez le jouer, quelle couleur souhaitez-vous pour lui ?");
+        String choix = "";
+        while (!couleurs.contains(choix)) {
+            System.out.print("(r, v, b ou j) : ");
+            choix = scanner.nextLine();
+        }
+        return choix;
+    }
+
+    public String choisirCouleurCartePioche4() {
+        List<String> couleurs = List.of("r", "v", "b", "j");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Vous avez pioché un +4 et vous allez le jouer, quelle couleur souhaitez-vous pour lui ?");
         String choix = "";
         while (!couleurs.contains(choix)) {
             System.out.print("(r, v, b ou j) : ");

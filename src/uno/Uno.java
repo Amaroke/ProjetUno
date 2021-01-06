@@ -21,8 +21,6 @@ public class Uno {
     private PaquetDeCartes pioche;
     private PaquetDeCartes talon;
     private DialogueLigneDeCommande dial;
-
-
     private boolean jeuTerminee;
 
     public Uno() {
@@ -142,13 +140,30 @@ public class Uno {
     }
 
     public void distribuerCartesJoueurSuivant(int nb) {
-        if (getJoueurQuiJoue() == getNbJoueurs()) {
-            for (int i = 0; i < nb; ++i) {
-                listeJoueurs.get(0).getMainDuJoueur().ajouter(pioche.piocher());
+        if (getSensHoraire()) {
+            if (getJoueurQuiJoue() == getNbJoueurs()) {
+                for (int i = 0; i < nb; ++i) {
+                    if(!getPioche().estVide()){
+                    listeJoueurs.get(0).getMainDuJoueur().ajouter(pioche.piocher());}
+                }
+            } else {
+                for (int i = 0; i < nb; ++i) {
+                    if(!getPioche().estVide()){
+                    listeJoueurs.get(getJoueurQuiJoue()).getMainDuJoueur().ajouter(pioche.piocher());}
+                }
             }
-        } else {
-            for (int i = 0; i < nb; ++i) {
-                listeJoueurs.get(joueurQuiJoue).getMainDuJoueur().ajouter(pioche.piocher());
+        }
+        if (!getSensHoraire()) {
+            if (getJoueurQuiJoue() == 1) {
+                for (int i = 0; i < nb; ++i) {
+                    if(!getPioche().estVide()){
+                    listeJoueurs.get(getNbJoueurs() - 1).getMainDuJoueur().ajouter(pioche.piocher());}
+                }
+            } else {
+                for (int i = 0; i < nb; ++i) {
+                    if(!getPioche().estVide()){
+                    listeJoueurs.get(getJoueurQuiJoue() - 1).getMainDuJoueur().ajouter(pioche.piocher());
+                }}
             }
         }
     }
@@ -182,9 +197,12 @@ public class Uno {
                 }
                 getDial().pauseBot();
             }
-            for (int i = 0; i < getNbJoueurs(); i++) {
-                if (getJoueur(i+1).getMainDuJoueur().getNombreDeCartes() == 0 || getPioche().getNombreDeCartes() == 0) {
-                        getDial().afficherScore(i, getJoueur(i+1).getMainDuJoueur().getValeur());
+            for (int i = 0; i < getNbJoueurs()-1; i++) {
+                if ((getJoueur(i + 1).getMainDuJoueur().getNombreDeCartes() == 0 || getPioche().getNombreDeCartes() == 0) && !isJeuTerminee()) {
+                    for (int j = 1; j < getNbJoueurs(); j++) {
+                        getDial().afficherScore(j+1, getJoueur(j+1).getMainDuJoueur().getValeur());
+                    }
+                    getDial().afficherMonScore(getJoueur(1).getMainDuJoueur().getValeur());
                     setJeuTerminee(true);
                 }
             }

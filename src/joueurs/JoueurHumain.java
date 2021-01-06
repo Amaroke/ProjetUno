@@ -34,8 +34,24 @@ public class JoueurHumain extends Joueur {
             // Si la carte piocher peut-être joué on la joue.
             if (getUno().getTalon().getSommet().peutEtreRecouverte(cartePiocher)) {
                 // Si c'est une carte qui doit prendre une couleur, on la demande au joueur
-                if (cartePiocher.effet() == 3 || cartePiocher.effet() == 6) {
-                    switch (getUno().getDial().choisirCouleurCartePioche().charAt(0)) {
+                if (cartePiocher.effet() == 3) {
+                    switch (getUno().getDial().choisirCouleurCartePiocheJoker().charAt(0)) {
+                        case 'r':
+                            cartePiocher.setCouleur(Couleur.ROUGE);
+                            break;
+                        case 'v':
+                            cartePiocher.setCouleur(Couleur.VERT);
+                            break;
+                        case 'b':
+                            cartePiocher.setCouleur(Couleur.BLEU);
+                            break;
+                        case 'j':
+                            cartePiocher.setCouleur(Couleur.JAUNE);
+                            break;
+                    }
+                }
+                if (cartePiocher.effet() == 6) {
+                    switch (getUno().getDial().choisirCouleurCartePioche4().charAt(0)) {
                         case 'r':
                             cartePiocher.setCouleur(Couleur.ROUGE);
                             break;
@@ -51,6 +67,7 @@ public class JoueurHumain extends Joueur {
                     }
                 }
                 getUno().getTalon().ajouter(cartePiocher);
+                getUno().getTalon().getSommet().appliquerEffet();
                 // Sinon on se contente de l'ajouter à notre main.
             } else {
                 getMainDuJoueur().ajouter(cartePiocher);

@@ -24,7 +24,6 @@ public class CarteJoker extends Carte {
 
     @Override
     public void appliquerEffet() {
-
     }
 
     @Override

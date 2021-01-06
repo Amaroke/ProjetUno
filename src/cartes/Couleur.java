@@ -12,6 +12,18 @@ public enum Couleur {
     }
 
     public String toString() {
+        if (nom.equals("Jaune")) {
+            return "J\uD83D\uDFE1";
+        }
+        if (nom.equals("Vert")) {
+            return "V\uD83D\uDFE2";
+        }
+        if (nom.equals("Bleu")) {
+            return "B\uD83D\uDD35";
+        }
+        if (nom.equals("Rouge")) {
+            return "R\uD83D\uDD34";
+        }
         return nom;
     }
 }

@@ -65,7 +65,7 @@ class UnoTest {
         uno.setJoueurQuiDistribue(2);
         uno.choisirQuiJoue();
         uno.distribuerCartesJoueurSuivant(4);
-        assertEquals(uno.getJoueur(2).getMainDuJoueur().getNombreDeCartes(), 4);
+        assertEquals(uno.getJoueur(1).getMainDuJoueur().getNombreDeCartes(), 4);
         assertEquals(uno.getPioche().getNombreDeCartes(), 104);
     }
 }

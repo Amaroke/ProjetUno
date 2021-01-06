@@ -24,7 +24,7 @@ public class CartePasseTonTour extends Carte {
 
     @Override
     public void appliquerEffet() {
-
+        getUno().changerDeJoueur();
     }
 
     @Override
