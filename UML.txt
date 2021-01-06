@@ -1,0 +1,225 @@
+@startuml
+package cartes{
+    abstract class Carte {
+        +Carte(Uno uno)
+        +Carte(Uno uno, Couleur couleur)
+        +Uno getUno()
+        +Couleur getCouleur()
+        +void setCouleur(Couleur couleur)
+        +abstract boolean peutEtreRecouverte(Carte c)
+        +abstract int getValeur()
+        +abstract int effet()
+        +abstract void appliquerEffet()
+        +boolean estSansCouleur()
+        +boolean estDeCouleurCompatible(Couleur c)
+        +boolean peutEtrePoseeSur(CarteChiffre c)
+        +boolean peutEtrePoseeSur(CarteChangementDeSens c)
+        +boolean peutEtrePoseeSur(CarteJoker c)
+        +boolean peutEtrePoseeSur(CartePasseTonTour c)
+        +boolean peutEtrePoseeSur(CartePlus2 c)
+        +boolean peutEtrePoseeSur(CartePlus4 c)
+        +String toString()
+    }
+
+    class CarteChangementDeSens extends Carte {
+        +CarteChangementDeSens(Uno uno, Couleur couleur)
+        +int getValeur()
+        +int effet()
+        +void appliquerEffet()
+        +boolean peutEtrePoseeSur(CarteChangementDeSens c)
+        +String toString()
+    }
+
+    class CarteChiffre extends Carte {
+        +CarteChiffre(Uno uno, Couleur couleur, int chiffre)
+        +boolean peutEtreRecouverte(Carte c)
+        +int getValeur()
+        +int effet()
+        +void appliquerEffet()
+        +boolean peutEtrePoseeSur(CarteChiffre c)
+        +String toString()
+    }
+
+    class CarteJoker extends Carte {
+        +CarteJoker(Uno uno)
+        +boolean peutEtreRecouverte(Carte c)
+        +int getValeur()
+        +int effet()
+        +void appliquerEffet()
+        +boolean peutEtrePoseeSur(CarteJoker c)
+        +String toString()
+    }
+
+    class PasseTonTour extends Carte {
+        +CartePasseTonTour(Uno uno, Couleur couleur)
+        +boolean peutEtreRecouverte(Carte c)
+        +int getValeur()
+        +int effet()
+        +void appliquerEffet()
+        +boolean peutEtrePoseeSur(CartePasseTonTour c)
+        +String toString()
+    }
+
+    class CartePlus2 extends Carte {
+        +CartePlus2(Uno uno, Couleur couleur)
+        +boolean peutEtreRecouverte(Carte c)
+        +int getValeur()
+        +int effet()
+        +void appliquerEffet()
+        +boolean peutEtrePoseeSur(CartePlus2 c)
+        +String toString()
+    }
+
+
+    class CartePlus4 extends Carte {
+        +boolean peutEtreRecouverte(Carte c)
+        +int getValeur()
+        +int effet()
+        +void appliquerEffet()
+        +boolean peutEtrePoseeSur(CartePlus4 c)
+        +String toString()
+    }
+
+    enum Couleur {
+        -String nom
+        Couleur(String nom)
+        +String toString()
+    }
+
+    class FabriqueCartes {
+        -static final FabriqueCartes instance
+        +static FabriqueCartes getInstance()
+        +PaquetDeCartes getPaquetVide()
+        +PaquetDeCartes getPaquetDeUno(Uno uno)
+    }
+
+    class PaquetDeCartes implements Iterable {
+        +PaquetDeCartes()
+        +ArrayList<Carte> getPaquet()
+        +int getNombreDeCartes()
+        +boolean estVide()
+        +int getValeur()
+        +void ajouter(Carte... cartes)
+        +void ajouter(PaquetDeCartes pdc)
+        +void melanger()
+        +void retourner()
+        +Carte getSommet()
+        +Carte piocher()
+        +void ecrire(String args) throws IOException
+        +void lire(String args) throws FileNotFoundException
+        +Iterator<Carte> iterator()
+        +String toString()
+    }
+}
+
+package dialogue {
+    class DialogueLigneDeCommande{
+    +Uno getUno()
+    +DialogueLigneDeCommande(Uno uno)
+    +void mettreAJour()
+    +String taperUnChoix()
+    +void pauseBot()
+    +void afficherErreur(String e)
+    +void afficherScore(int n, int nb)
+    +void afficherMonScore(int nb)
+    +void finDuJeu()
+    +String choisirCouleurCartePiocheJoker()
+    +String choisirCouleurCartePioche4()
+    }
+}
+
+package erreurs {
+        class CoupIncorrectException extends Exception {
+        +CoupIncorrectException(String s)
+    }
+}
+
+package joueur {
+    abstract class Joueur {
+        +Joueur(Uno uno)
+        +abstract boolean estUnJoueurHumain()
+        +PaquetDeCartes getMainDuJoueur()
+        +Carte getCarteNumero(int n)
+        +Uno getUno()
+        +abstract void jouer(String coup) throws CoupIncorrectException
+        +Carte carteChoisie(String coup) throws CoupIncorrectException
+    }
+
+    class JoueurBot extends Joueur {
+        +JoueurBot(Uno uno, Strategie strategie)
+        +Strategie getStrategie()
+        +boolean estUnJoueurHumain()
+        +void jouer(String coup) throws CoupIncorrectException
+    }
+
+    class JoueurHumain extends Joueur {
+        +JoueurHumain(Uno uno)
+        +boolean estUnJoueurHumain()
+        +void jouer(String coup) throws CoupIncorrectException
+    }
+
+    interface Strategie {
+        +void jouer(PaquetDeCartes pdc, Uno uno)
+    }
+
+    class StrategieDifficile implements Strategie {
+        +void jouer(PaquetDeCartes pdc, Uno uno)
+    }
+
+    class StrategieFacile implements Strategie {
+        +void jouer(PaquetDeCartes pdc, Uno uno)
+    }
+
+    class StrategieMoyen implements Strategie {
+        +void jouer(PaquetDeCartes pdc, Uno uno)
+    }
+}
+
+package uno {
+    class Uno {
+        -int nbJoueurs
+        -int joueurQuiJoue
+        -int joueurQuiDistribue
+        -boolean sensHoraire
+        -boolean jeuTerminee
+        +Uno()
+        +int getNbJoueurs()
+        +Joueur getJoueur(int nb)
+        +int getJoueurQuiDistribue()
+        +void setJoueurQuiDistribue(int joueurQuiDistribue)
+        +int getJoueurQuiJoue()
+        +Joueur joueurQuiJoue()
+        +boolean getSensHoraire()
+        +PaquetDeCartes getTalon()
+        +DialogueLigneDeCommande getDial()
+        +boolean isJeuTerminee()
+        +void setJeuTerminee(boolean jeuTerminee)
+        +void setTalon(PaquetDeCartes talon)
+        +PaquetDeCartes getPioche()
+        +void setPioche(PaquetDeCartes pioche)
+        +void setDialogue(DialogueLigneDeCommande dial)
+        +void initialiser(int nbJoueurs, Strategie strategie)
+        +void creerLesJoueurs(int nbJoueurs, Strategie strategie)
+        +void choisirQuiDistribue()
+        +void choisirQuiJoue()
+        +void distribuerCartes()
+        +void changerDeSens()
+        +void changerDeJoueur()
+        +void distribuerCartesJoueurSuivant(int nb)
+        +void jeu()
+    }
+}
+
+class mainLigneDeCommande {
+    +static void main(String[] args)
+}
+
+JoueurBot -- "1" Strategie
+Uno "1" -- Carte
+PaquetDeCartes "1" -- Joueur
+PaquetDeCartes "2" -- Uno
+Joueur "*" -- "1" Uno
+Couleur "1" -- Carte
+Uno "1" -- "1" DialogueLigneDeCommande
+Carte "*" -- PaquetDeCartes
+@enduml
