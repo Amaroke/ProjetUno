@@ -7,6 +7,7 @@ import uno.Uno;
 
 public class StrategieDifficile implements Strategie {
 
+    // Le bot difficile favorise la couleur la plus présente dans sa main.
     @Override
     public void jouer(PaquetDeCartes pdc, Uno uno) {
         boolean leJoueurAJoue = false;
